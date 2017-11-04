@@ -493,16 +493,15 @@ let updateSchedule;
   };
   document.getElementById('button-generate').onclick = updateSchedule;
 
-  document.getElementById('button-sections').checked = options.showSections = localStorage.showSections;
+  document.getElementById('button-sections').checked = options.showSections = localStorage.showSections === 'true';
   document.getElementById('button-sections').onclick = function () {
     localStorage.showSections = options.showSections = this.checked;
-    document.getElementById('button-generate').onclick();
+    updateSchedule();
   };
 
-  document.getElementById('button-autogenerate').checked = options.autogenerate = localStorage.autogenerate;
+  document.getElementById('button-autogenerate').checked = options.autogenerate = localStorage.autogenerate === 'true';
   document.getElementById('button-autogenerate').onclick = function () {
     localStorage.autogenerate = options.autogenerate = this.checked;
-    document.getElementById('button-autogenerate').onclick();
   };
 
   // Navigating schedules
