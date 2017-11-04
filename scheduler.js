@@ -557,7 +557,7 @@ let updateSchedule;
     if (!course) {
       course = {
 	'name': name,
-	'selected': true,
+	'selected': false,
 	'times': timeSlot,
 	'data': data
       };
