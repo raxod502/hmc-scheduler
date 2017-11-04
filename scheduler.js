@@ -348,28 +348,38 @@ function generateSchedules(courses) {
       break;
   }
 
-  // Concatenate all the timeslots
-  return combos.map(function (combo) {
-    return Array.prototype.concat.apply([], combo);
-  })
-
-  // And remove conflicting schedules
-    .filter(function (timeSlots) {
-
-      // Loop over every six minute interval and make sure no two classes occupy it
-      for (var day = 0; day < 5; day++) {
-
-	var todaySlots = timeSlots.filter(function (timeSlot) { return timeSlot.weekday == day; });
-	for (var t = 0; t < 24; t += 0.1)
-	  if (todaySlots.filter(function (timeSlot) {
-	    return timeSlot.from < t && t < timeSlot.to;
-	  }).length > 1)
-	    return false;
-
+  return combos.filter(function (combo) {
+    // Iterate through each pair of classes.
+    for (let i = 0; i < combo.length; i++) {
+      for (let j = 0; j < combo.length; j++) {
+        // A class can't conflict with itself.
+        if (i === j) {
+          continue;
+        }
+        // Iterate through each pair of time slots.
+        for (let k = 0; k < combo[i].length; k++) {
+          for (let l = 0; l < combo[j].length; l++) {
+            // Checking if the time slots overlap.
+            if (combo[i][k].to <= combo[j][l].from || combo[i][k].from >= combo[j][l].to) {
+              continue;
+            }
+            // Checking that the overlap happens on the same day.
+            if (combo[i][k].weekday !== combo[j][l].weekday) {
+              continue;
+            }
+            console.log('Found conflict between ' + combo[i][k].to + '-' + combo[i][k].from + '/' + combo[i][k].weekday + ' and ' + combo[j][l].to + '-' + combo[j][l].from + '/' + combo[j][l].weekday);
+            // We have a conflict.
+            return false;
+          }
+        }
       }
-
-      return true;
-    });
+    }
+    console.log('No conflict');
+    return true;
+  }).map(function (combo) {
+    // Concatenate all the time slots
+    return Array.prototype.concat.apply([], combo);
+  });
 }
 
 // Store stuff
