@@ -367,14 +367,12 @@ function generateSchedules(courses) {
             if (combo[i][k].weekday !== combo[j][l].weekday) {
               continue;
             }
-            console.log('Found conflict between ' + combo[i][k].to + '-' + combo[i][k].from + '/' + combo[i][k].weekday + ' and ' + combo[j][l].to + '-' + combo[j][l].from + '/' + combo[j][l].weekday);
             // We have a conflict.
             return false;
           }
         }
       }
     }
-    console.log('No conflict');
     return true;
   }).map(function (combo) {
     // Concatenate all the time slots
