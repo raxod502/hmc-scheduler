@@ -204,3 +204,15 @@ td {
 	display: none;
     }
 }
+
+.float-right {
+    float: right;
+}
+
+.courses-header {
+    font-size: 125%;
+}
+
+#courses-header {
+    font-weight: bold;
+}

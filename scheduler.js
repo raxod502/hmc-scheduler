@@ -63,6 +63,9 @@ function addCourse(course, i, courses) {
   courseNode.querySelector('input[type="checkbox"]').onchange = function () {
     course.selected = !!this.checked;
     save('courses', courses);
+    if (options.autogenerate) {
+      updateSchedule();
+    }
     document.getElementById('button-generate').disabled = false;
   };
 
@@ -400,6 +403,8 @@ function messageOnce(str) {
   return true;
 }
 
+let updateSchedule;
+
 (function () {
   var VERSION = 3;
 
@@ -460,7 +465,7 @@ function messageOnce(str) {
     }
   };
 
-  document.getElementById('button-generate').onclick = function () {
+  updateSchedule = function () {
     schedules = generateSchedules(courses);
 
     // Display them all
@@ -486,11 +491,18 @@ function messageOnce(str) {
 
     this.disabled = true;
   };
+  document.getElementById('button-generate').onclick = updateSchedule;
 
   document.getElementById('button-sections').checked = options.showSections = localStorage.showSections;
   document.getElementById('button-sections').onclick = function () {
     localStorage.showSections = options.showSections = this.checked;
     document.getElementById('button-generate').onclick();
+  };
+
+  document.getElementById('button-autogenerate').checked = options.autogenerate = localStorage.autogenerate;
+  document.getElementById('button-autogenerate').onclick = function () {
+    localStorage.autogenerate = options.autogenerate = this.checked;
+    document.getElementById('button-autogenerate').onclick();
   };
 
   // Navigating schedules

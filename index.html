@@ -27,12 +27,20 @@
 	</ol>
       </div>
 
-      <h1>Courses
-	<span id="credit-counter"></span>
-	<button id="button-generate" disabled="disabled">Generate</button>
-	<button id="button-add">+</button>
-	<input id="button-sections" type="checkbox" title="Section numbers?" />
-      </h1>
+      <div>
+        <span>Auto-generate?</span>
+        <input id="button-autogenerate" type="checkbox" title="Autogenerate?" checked />
+      </div>
+      <div>
+        <span id="courses-header" class="courses-header">Courses</span>
+        <span id="credit-counter" class="courses-header"></span>
+        <span class="float-right">
+          <span>Show sections?</span>
+          <input id="button-sections" type="checkbox" title="Section numbers?" />
+          <button id="button-add">+</button>
+          <button id="button-generate" disabled="disabled">Generate</button>
+        </span>
+      </div>
       <div id="courses-container">
 	<div id="courses-filler" class="text">Click the add button or use the bookmarklet above to get started!</div>
 	<div id="courses">
@@ -66,7 +74,7 @@
 	  <li>Be careful with half-semester courses &ndash; if they're at the same time, this'll tell you that they conflict.</li>
 	  <li>To show section numbers and professors, use the checkbox next to the Generate button. (If you added classes before this feature was available, you'll need to <a href="#" id="button-clear">delete all of them</a> and add them again via Portal before you can use it.)</li>
 	</ul>
-	Bugs or suggestions? <a href="mailto:cchu@hmc.edu">Email me</a> or <a href="https://github.com/bitsofpancake/hmc-scheduler" target="_blank">fork it on GitHub</a>!
+        Built from <a href="https://github.com/raxod502/hmc-scheduler"><b>raxod502/hmc-scheduler</b></a>.
       </div>
     </div>
 
