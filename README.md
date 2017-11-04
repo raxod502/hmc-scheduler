@@ -1,6 +1,23 @@
-hmc-scheduler
-=============
+# **hmc-scheduler**
 
-Here's a tool to help you arrange your classes for next semester. Input the classes you want to take, and it'll tell you which schedules are compatible, if any. It's designed for use with Harvey Mudd College's Portal, but it doesn't have to be used that way. In fact, it can be used for scheduling other things, too! Stores data on the client computer.
+This is a simple bookmarklet + webapp for use in scheduling classes at
+Harvey Mudd College. The bookmarklet allows you to add classes
+directly from the [HMC Portal][portal], and the webapp displays those
+classes in a graphical schedule.
 
-Here's [a link to a working version](http://bitsofpancake.github.io/hmc-scheduler). Thanks to Alex Ozdemir, Jonathan Chang, and Lisa Yin for improvements!
+The version of **hmc-scheduler** versioned in this repository is
+deployed [here][webapp], using GitHub Pages.
+
+There are also several other versions of **hmc-scheduler**, including:
+
+* [hmc-tools/hmc-scheduler][official], hosted [here][official-webapp]
+* [hmc-portal2/hmc-scheduler][gavin], hosted [here][gavin-webapp]
+
+The reader may draw their own conclusions.
+
+[gavin]: https://github.com/hmc-portal2/hmc-scheduler
+[gavin-webapp]: https://portal2.yancey.io/
+[official]: https://github.com/hmc-tools/hmc-scheduler
+[official-webapp]: http://hmc-tools.github.io/hmc-scheduler/
+[portal]: https://portal.hmc.edu/
+[webapp]: https://raxod502.github.io/hmc-scheduler/
