@@ -300,7 +300,11 @@ function generateSchedules(courses) {
   // Parse all the courses from text form into a list of courses, each a list of time slots
   var classes = courses.filter(function (course) { return course.selected && course.times; }).map(function (course) {
     // Parse every line separately
-    return course.times.split('\n').map(function (timeSlot) {
+    return course.times.split('\n')
+      .filter(function (timeSlot) {
+        return !/^\s*\/\//.test(timeSlot);
+      })
+      .map(function (timeSlot) {
 
       // Extract the section info from the string, if it's there.
       var section = timeSlot.indexOf(': ') > -1 ? timeSlot.split(': ')[0] : '';
